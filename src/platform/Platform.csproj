@@ -64,16 +64,26 @@
     <PackageReference Include="Sitecore.XmCloud.Assemblies" />
     <PackageReference Include="Sitecore.Assemblies.SitecoreHeadlessServicesServer" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="Platform.wpp.targets" />
-    <None Include="Properties\PublishProfiles\Local.pubxml" />
-    <None Include="README.md" />
-    <None Include="web.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Config\Include\" />
-  </ItemGroup>
-  <PropertyGroup>
+	<ItemGroup>
+		<Content Include="App_Config\**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="sitecore modules\**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+		<Content Include="binaries\**">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+			<Link>bin\%(Filename)%(Extension)</Link>
+		</Content>
+		<None Include="Platform.wpp.targets" />
+		<None Include="Properties\PublishProfiles\Local.pubxml" />
+		<None Include="README.md" />
+	</ItemGroup>
+	<ItemGroup>
+		<Folder Include="bin\" />
+	</ItemGroup>
+
+	<PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
